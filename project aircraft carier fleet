@@ -1,0 +1,194 @@
+import java.sql.*;
+import java.util.Scanner;
+
+class CarrierFleet {
+    public String Name;
+    public String Origin;
+    public String Displacement;
+    public String Info;
+}
+
+class DailyActivities {
+    public void displayActivities() {
+        Scanner scanner = new Scanner(System.in);
+        int ch;
+        do {
+            System.out.println("Select A Daily Activity : ");
+            System.out.println("1. Initiate Mission Planning ");
+            System.out.println("2. Timings of Crew members  ");
+            System.out.println("3. Training Sessions  ");
+            System.out.println("4. Daily Inspection ");
+            System.out.println("5. Communication Drills ");
+            System.out.print("Enter Your Choice: ");
+            ch = scanner.nextInt();
+            switch (ch) {
+                case 1:
+                    System.out.println("Phase 1: Pre-Mission Planning (1200-1400 hours)");
+                    System.out.println("1. Intelligence Briefing: Review enemy disposition, target Locations, and weather forecast");
+                    System.out.println("2. Tasking: Launch 4x MIG-29k fighters for combat air patrol (CAP)");
+                    System.out.println("   Deploy 2x Kamov ka-31 AEW &C for airborne early warning");
+                    System.out.println("   Utilize Kamov ka-28 ASW helicopters for submarine detection and engagement");
+                    System.out.println("   Provide air support for convoy escort");
+                    System.out.println("   Report To Base after Mission is Successful");
+                    break;
+                case 2:
+                    System.out.println("Training and exercise Schedule: ");
+                    System.out.println("1. 6:00 to 9:00 AM - Exercise/Drills/Breakfast");
+                    System.out.println("2. 9:00 to 12:00 - Maneuvering aircrafts to tackle enemies from entering: ");
+                    System.out.println("3. 12:00 to 2:00 - Break/Lunch");
+                    System.out.println("4. 2:00 to 5:00 - Aircraft training");
+                    System.out.println("5. 5:00 to 6:00 - Tea Break");
+                    System.out.println("6. 6:00 to 9:00 - Performing checkup/Maintenance of Fleet/Servicing of aircrafts");
+                    break;
+                case 3:
+                    System.out.println("Exercise: Carrier Air Wing (CAV) Integration Exercise");
+                    System.out.println("Objectives: Coordinate and synchronize flight operations between multiple aircraft types");
+                    System.out.println("          Practice emergency procedures and carrier landing techniques");
+                    System.out.println("0600 Hours: Pre-Flight Briefing");
+                    System.out.println("0700 Hours: Aircraft Launch");
+                    System.out.println("0800 Hours: Air Combat Maneuvers (ACM)");
+                    System.out.println("1000 Hours: Strike Mission");
+                    System.out.println("1200 Hours: Landing Practice");
+                    System.out.println("1400 Hours: Search and Rescue (SAR) Exercise");
+                    System.out.println("1600 Hours: Debriefing");
+                    break;
+                case 4:
+                    System.out.println("Propulsion Systems:");
+                    System.out.println("Engines: Visual inspection for leaks, corrosion, and damage. Checking oil and coolant levels, and monitoring engine performance parameters.");
+                    System.out.println("Boilers: Inspecting for water levels, pressure gauges, and safety valves. Checking for leaks and signs of corrosion.");
+                    System.out.println("Shafts and Propellers: Visual inspection for damage, alignment, and corrosion. Checking for vibration and noise levels.");
+                    System.out.println("Aviation Facilities:");
+                    System.out.println("Flight Deck: Inspecting the deck surface for damage, foreign object debris (FOD), and ensuring proper markings and lighting.");
+                    System.out.println("Hangar Bay: Inspecting the hangar floor, tie-down points, and fire suppression systems. Checking for leaks and proper ventilation.");
+                    System.out.println("Aircraft: Daily pre-flight inspections of all aircraft, including visual checks for damage, fuel levels, and hydraulic fluid levels.");
+                    System.out.println("Electrical Systems:");
+                    System.out.println("Power Generation: Inspecting generators, transformers, and switchboards. Checking for voltage and current levels, and ensuring proper cooling.");
+                    System.out.println("Distribution Systems: Inspecting cables, conduits, and junction boxes. Checking for damage, loose connections, and overheating.");
+                    System.out.println("Lighting Systems: Inspecting all lighting fixtures, including deck lighting, hangar bay lighting, and emergency lighting. Ensuring proper operation and brightness.");
+                    System.out.println("Other Systems:");
+                    System.out.println("Hull and Superstructure: Visual inspection for damage, corrosion, and biofouling. Checking for leaks and water ingress.");
+                    System.out.println("Weapon Systems: Inspecting missiles, guns, and radar systems. Ensuring proper alignment, power supply, and readiness for operation.");
+                    System.out.println("Communication Systems: Inspecting radios, satellite communications, and internal communication systems. Ensuring proper operation and signal strength.");
+                    break;
+                case 5:
+                    System.out.println("Internal Communications:");
+                    System.out.println("Voice Communication: Regular voice communication drills are conducted to ensure clarity, accuracy, and efficiency in voice transmissions between bridge, operations room");
+                    System.out.println("Data Link Communications: Drills are conducted to ensure seamless data exchange between various systems, such as the combat management system, radar systems, and weapon systems.");
+                    System.out.println("Internal Telephone Systems: Regular testing of internal telephone systems to ensure reliable communication between different departments and personnel.");
+                    System.out.println("External Communications:");
+                    System.out.println("Radio Communications: Drills to practice communication with other ships, submarines, and aircraft using various radio frequencies.");
+                    System.out.println("Satellite Communications: Drills to ensure reliable communication with shore-based facilities and other naval assets using satellite communication systems.");
+                    System.out.println("Tactical Data Link (TDL) Communications: Drills to practice data exchange with other naval units using TDL systems.");
+                    System.out.println("Emergency Communications:");
+                    System.out.println("Emergency Broadcast System (EBS): Regular testing of the EBS to ensure it can be used to disseminate emergency information to all personnel on the ship.");
+                    break;
+                default:
+                    System.out.println("Invalid Choice. Please try again.");
+            }
+            System.out.print("Press 1 to Repeat, 0 to exit: ");
+            ch = scanner.nextInt();
+        } while (ch == 1);
+    }
+}
+
+class Squadron {
+    public void displaySquadronDetails(String carrier) {
+        if (carrier.equals("INS Vikramaditya")) {
+            System.out.println("Squadron details Of INS Vikramaditya: ");
+            System.out.println("Squadron\t\tName\t\t\tAircraft");
+            System.out.println("INAS 300\t\tWhite Tigers\t\tMiG 29KUB");
+            System.out.println("INAS 303\t\tThe Black Panthers\tMiG 29K");
+            System.out.println("INAS 321\t\tThe Angels\t\tHAL Chetak");
+            System.out.println("INAS 322\t\tThe Guardians\t\tHAL Dhruv");
+            System.out.println("INAS 330\t\tThe Harpoons\t\tSea King");
+            System.out.println("INAS 339\t\tThe Falcons\t\tKamov Ka-31");
+        } else if (carrier.equals("INS Vikrant")) {
+            System.out.println("Squadron details of INS Vikrant: ");
+            System.out.println("Squadron\t\tName\t\t\tAircraft");
+            System.out.println("INAS 300\t\tWhite Tigers\t\tMiG 29KUB");
+            System.out.println("INAS 303\t\tThe Black Panthers\tMiG 29K");
+            System.out.println("INAS 321\t\tThe Angels\t\tHAL Chetak");
+            System.out.println("INAS 322\t\tThe Guardians\t\tHAL Dhruv");
+            System.out.println("INAS 334\t\tThe SeaHawks\t\tMH-60 R");
+            System.out.println("INAS 339\t\tThe Falcons\t\tKamov Ka-31");
+        } else {
+            System.out.println("Invalid Carrier.");
+        }
+    }
+}
+
+class Aircraft {
+    public String Name;
+    public String Type;
+    public String Commissioning;
+    public String Squadron;
+    public String Info;
+}
+
+class Modification {
+    public String Avionics;
+    public String Bombs;
+    public String Communication;
+    public String Engine;
+    public String Guns;
+    public String Radar;
+    public String Warfare;
+}
+
+public class CarrierFleetManagement {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String username, password;
+        System.out.print("Enter username: ");
+        username = scanner.next();
+        System.out.print("Enter password: ");
+        password = scanner.next();
+        
+        if (authenticateUser(username, password)) {
+            System.out.println("Login successful!!");
+            System.out.println("Welcome to Indian Navy Carrier fleet Management and Modification System");
+            System.out.println("Select Carrier fleet: ");
+            System.out.println("1. INS Vikramaditya (R33)");
+            System.out.println("2. INS Vikrant (R11)");
+            System.out.print("Enter your choice: ");
+            int ch = scanner.nextInt();
+            
+            CarrierFleet carrier = new CarrierFleet();
+            DailyActivities dailyActivities = new DailyActivities();
+            Squadron squadron = new Squadron();
+            
+            if (ch == 1) {
+                carrier.Name = "INS Vikramaditya";
+                carrier.Origin = "Soviet Union Baku Russia";
+                carrier.Displacement = "45,400 Tonnes";
+                carrier.Info = "INS Vikramaditya is India's Majestic Aircraft Carrier. Commissioned in 2013, It has a top-speed of 30 Knots";
+                System.out.println("Name: " + carrier.Name);
+                System.out.println("Origin: " + carrier.Origin);
+                System.out.println("Displacement: " + carrier.Displacement);
+                System.out.println("Information: " + carrier.Info);
+                dailyActivities.displayActivities();
+                squadron.displaySquadronDetails("INS Vikramaditya");
+            } else if (ch == 2) {
+                carrier.Name = "INS Vikrant";
+                carrier.Origin = "India";
+                carrier.Displacement = "40,000 Tonnes";
+                carrier.Info = "INS Vikrant is an Indigenously developed aircraft carrier. It was constructed by the Cochin Shipyard Limited (CSL) in Kochi, Kerala. The Name \"Vikrant\" is a tribute to India's First aircraft carrier, which also bore the same name";
+                System.out.println("Name: " + carrier.Name);
+                System.out.println("Origin: " + carrier.Origin);
+                System.out.println("Displacement: " + carrier.Displacement);
+                System.out.println("Information: " + carrier.Info);
+                dailyActivities.displayActivities();
+                squadron.displaySquadronDetails("INS Vikrant");
+            } else {
+                System.out.println("Invalid Choice");
+            }
+        } else {
+            System.out.println("Invalid Username Or Password");
+        }
+    }
+
+    private static boolean authenticateUser(String username, String password) {
+        // Simulating database authentication
+        return username.equals("CarrierFleet@123") && password.equals("IndianNavy@123");
+    }
+}
